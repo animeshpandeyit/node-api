@@ -1,6 +1,6 @@
 import express from "express";
 
-import mongoose from "mongoose";
+import mongoose, { get } from "mongoose";
 
 const app = express();
 
@@ -69,11 +69,33 @@ app.post("/users/create", async (req, res) => {
 //
 
 app.get("/usersid", async (req, res) => {
-  const { id } = req.body;
-  const user = await User.findById(id);
+  // const { id } = req.body;
+  const { id } = req.query;
+  // const user = await User.findById(id);
+  console.log(req.params);
   res.json({ success: true, message: " Person Found successfully", user });
 });
 
+// app.get("/usersid/:id", async (req, res) => {
+//   const { id } = req.query;
+//   console.log(req.params);
+//   res.json({ success: true, message: " Person Found successfully", user: {} });
+// });
+
+//
+app.get("/usersid/special", async (req, res) => {
+    res.json({ success: true, message: " Special" });
+  });
+
+//
+
+app.get("/usersid/:id", async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+
+  res.json({ success: true, message: " Person Found successfully", user });
+});
+//
 
 const PORT = 5000;
 app.listen(PORT, () => {
