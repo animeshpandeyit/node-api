@@ -5,6 +5,9 @@ import { getallUsers } from "../controllers/user.js";
 import { Registration } from "../controllers/user.js";
 import { specialFunc } from "../controllers/user.js";
 import { getUserDetails } from "../controllers/user.js";
+import { updateUserDetails } from "../controllers/user.js";
+import { deleteUserDetails } from "../controllers/user.js";
+
 //
 router.get("/all", getallUsers);
 //
@@ -28,4 +31,13 @@ router.get("/usersid/special", specialFunc);
 //
 router.get("/usersid/:id", getUserDetails);
 //
+router.put("/usersid/:id", updateUserDetails);
+//
+router.delete("/usersid/:id", deleteUserDetails);
+
+// router
+//   .get("/usersid/:id")
+//   .get(getUserDetails)
+//   .put(updateUserDetails)
+//   .delete(deleteUserDetails);
 export default router;
