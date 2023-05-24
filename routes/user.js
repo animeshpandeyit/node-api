@@ -18,7 +18,6 @@ import { isAuthenticated } from "../middlewares/auth.js";
 
 //
 router.get("/all", getallUsers);
-//
 router.post("/create", register);
 router.post("/login", login);
 router.get("/logout", logout);
