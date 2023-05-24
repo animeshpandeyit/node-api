@@ -147,17 +147,13 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
-
   const user = await User.findOne({ email: email }).select("+password");
-
   if (!user) {
     return res
       .status(404)
       .json({ success: false, message: "User Doesn't Exist!!" });
   }
-
   const isMatch = await bcrypt.compare(password, user.password);
-
   if (!isMatch) {
     return res
       .status(404)
@@ -199,3 +195,9 @@ export const logout = (req, res) => {
       user: req.user,
     });
 };
+
+// {
+//   "name": "animesh pandey",
+//   "email": "animeshpandeyit@test.com",
+//   "password": "ani@123"
+// }
