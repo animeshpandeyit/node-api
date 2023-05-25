@@ -23,10 +23,8 @@ app.use(
     credentials: true,
   })
 );
-
 app.use("/app/v1/users", userRoute);
 app.use("/app/v1/task", taskRouter);
-
 app.get("/", (req, res) => {
   res.send("Welcome");
 });

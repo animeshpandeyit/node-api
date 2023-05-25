@@ -25,7 +25,6 @@ export const getMyTask = async (req, res, next) => {
 // export const updateTask = async (req, res, next) => {
 //   try {
 //     const task = await Task.findById(req.params.id);
-
 //     if (!task) {
 //       // return res.status(404).send({
 //       //   success: false,
@@ -49,12 +48,9 @@ export const getMyTask = async (req, res, next) => {
 export const updateTask = async (req, res, next) => {
   try {
     const task = await Task.findById(req.params.id);
-
     if (!task) return next(new ErrorHandler("Task not found", 404));
-
     task.isCompleted = !task.isCompleted;
     await task.save();
-
     res.status(200).json({
       success: true,
       message: "Task Updated!",
@@ -84,7 +80,6 @@ export const updateTask = async (req, res, next) => {
 export const deleteTask = async (req, res, next) => {
   //   const id = req.params.id;
   const task = await Task.findByIdAndRemove(req.params.id);
-
   if (!task) {
     // return next(new Error(""));
     return next(new ErrorHandler("task not found", 404));

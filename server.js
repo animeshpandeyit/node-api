@@ -9,7 +9,6 @@ app.listen(5000, () => {
   );
 });
 // console.log(process.env.PORT);
-
 // app.listen(process.env.PORT, () => {
 //   console.log("Server is Running...5000");
 // });
